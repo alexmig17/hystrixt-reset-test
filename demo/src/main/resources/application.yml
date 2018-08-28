@@ -1,0 +1,27 @@
+server:
+  port: 9020
+
+# hystrix main configuration, details can be found here: https://github.com/Netflix/Hystrix/wiki/configuration
+hystrix.command:
+  default:
+    execution:
+      isolation:
+        strategy: THREAD
+        thread:
+          timeoutInMilliseconds: 2000
+      timeout:
+        enabled: true
+    circuitBreaker:
+      enabled: true
+      requestVolumeThreshold: 1
+      sleepWindowInMilliseconds: 5000
+      errorThresholdPercentage: 50
+    metrics:
+      rollingPercentile:
+        enabled: true
+        timeInMilliseconds: 60000
+        numBuckets: 6
+    fallback:
+      enabled: false
+    requestCache:
+      enabled: false
