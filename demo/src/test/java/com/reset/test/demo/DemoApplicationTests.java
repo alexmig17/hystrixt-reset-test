@@ -4,6 +4,7 @@ import com.netflix.config.ConfigurationManager;
 import com.netflix.hystrix.Hystrix;
 import com.netflix.hystrix.HystrixCircuitBreaker;
 import com.netflix.hystrix.HystrixCommandMetrics;
+import com.netflix.hystrix.metric.consumer.HealthCountsStream;
 import com.netflix.hystrix.strategy.HystrixPlugins;
 import com.reset.test.demo.command.AbstractCommandExceptionCatcher;
 import com.reset.test.demo.command.HystrixCommandConfiguration;
@@ -50,6 +51,7 @@ public class DemoApplicationTests {
         };
         Hystrix.reset();
         HystrixPlugins.reset();
+        HealthCountsStream.reset();
         circuitBreakerAssertNull();
 
     }
